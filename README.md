@@ -52,7 +52,6 @@ Antes de rodar o projeto, você precisa:
 
 ### ⚙️ 3. Adicione ao seu `pubspec.yaml`:
 
-```yaml
 dependencies:
   flutter:
     sdk: flutter
