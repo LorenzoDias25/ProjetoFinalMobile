@@ -63,22 +63,23 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void _mostrarOpcoes(BuildContext context, String docId) {
+  void _mostrarOpcoes(BuildContext context, String docId) async {
     // Seu código original do modal, sem alterações
-    showModalBottomSheet(
+    final res = await showModalBottomSheet(
       context: context,
-      builder: (_) => Column(
+      builder: (context) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
             leading: Icon(Icons.edit),
             title: Text('Alterar'),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => NovaReceitaScreen(editId: docId),
-              ),
-            ),
+            // onTap: () => Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (_) => NovaReceitaScreen(editId: docId),
+            //   ),
+            // ),
+            onTap: () => Navigator.of(context).pop(0),
           ),
           ListTile(
             leading: Icon(Icons.visibility),
@@ -94,36 +95,53 @@ class _HomeScreenState extends State<HomeScreen> {
             leading: Icon(Icons.delete),
             title: Text('Excluir'),
             onTap: () {
-              Navigator.pop(context);
-              showDialog(
-                context: context,
-                builder: (_) => AlertDialog(
-                  title: Text('Confirmar exclusão'),
-                  content: Text('Deseja realmente excluir esta receita?'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text('Cancelar'),
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        await FirebaseFirestore.instance
-                            .collection('receitas')
-                            .doc(docId)
-                            .delete();
-                        if (!mounted) return;
-                        Navigator.pop(context);
-                      },
-                      child: Text('Excluir'),
-                    ),
-                  ],
-                ),
-              );
+              Navigator.pop(context, 2);
             },
           ),
         ],
       ),
     );
+    if (!context.mounted) {
+      return;
+    }
+    switch (res) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => NovaReceitaScreen(editId: docId)),
+        );
+        break;
+      case 2:
+        showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            title: Text('Confirmar exclusão'),
+            content: Text('Deseja realmente excluir esta receita?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Cancelar'),
+              ),
+              TextButton(
+                onPressed: () async {
+                  await FirebaseFirestore.instance
+                      .collection('usuarios')
+                      .doc(uid)
+                      .collection('receitas')
+                      .doc(docId)
+                      .delete();
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                  }
+                },
+                child: Text('Excluir'),
+              ),
+            ],
+          ),
+        );
+        break;
+    }
+    print(res);
   }
 
   @override
