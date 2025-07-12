@@ -126,5 +126,4 @@ Desenvolvido por [Lorenzo Canabarro Dias](https://github.com/LorenzoDias25)
 ## 📃 Licença
 
 Este projeto é licenciado para fins educacionais e pessoais.  
-Sinta-se à vontade para adaptar, modificar e reutilizar com os devidos créditos.  
-Distribuição comercial não é autorizada sem permissão prévia.
+Sinta-se à vontade para adaptar, modificar e reutilizar.
