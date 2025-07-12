@@ -73,26 +73,7 @@ Desenvolver um app completo em Flutter com integração Firebase, que ajude usu�
 
 ---
 
-## 4. 🧮 Diagrama do Projeto
-
-### 📊 Diagrama de Classes (UML)
-
-> Você pode visualizar o diagrama completo em [Diagrama no Lucidchart/Draw.io](#) *(link opcional se for usar imagem externa ou PDF)*
-
-
-### (Opcional) Diagrama de Casos de Uso
-
-- Criar Receita
-- Editar Receita
-- Favoritar Receita
-- Criar Lista de Compras
-- Criar Planejamento
-- Editar Perfil
-- Login / Logout
-
----
-
-## 5. ✅ Conclusão
+## 4. ✅ Conclusão
 
 ### 📚 O que foi aprendido:
 
