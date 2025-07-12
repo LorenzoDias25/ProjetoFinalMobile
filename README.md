@@ -42,26 +42,8 @@ Antes de rodar o projeto, você precisa:
 ### 📁 1. Ter instalado:
 - Flutter SDK (versão recomendada: 3.19 ou superior)
 - Android Studio ou VS Code com plugin Flutter
-- Conta no Firebase e um projeto configurado
 
-### 🔑 2. Configurar Firebase:
-- Ative **Authentication > Email/Password**
-- Ative **Cloud Firestore**
-- Crie o app Android no Firebase Console
-- Baixe o `google-services.json` e coloque em `android/app/`
 
-### ⚙️ 3. Adicione ao seu `pubspec.yaml`:
-
-dependencies:
-  flutter:
-    sdk: flutter
-  firebase_core: ^2.31.0
-  firebase_auth: ^4.18.0
-  cloud_firestore: ^4.16.0
-  provider: ^6.1.2
-  flutter_local_notifications: ^16.3.2
-
----
 
 ## ✍️ Autor
 
